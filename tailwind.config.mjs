@@ -51,6 +51,8 @@ module.exports = {
 			},
 			fontFamily: {
 
+				"fira_sans": [ "fira-sans", "sans-serif" ],
+				"larken": [ "larken", "sans-serif" ],
 
 			}
 
