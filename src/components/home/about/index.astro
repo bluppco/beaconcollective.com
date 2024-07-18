@@ -2,36 +2,39 @@
 
 // IMPORT ATOMS
 import ButtonOutlined from "@/atoms-diksha/buttons/outlined/index.astro"
-import Heading2 from "@/atoms-diksha/headings/two/6xl/black/color-primary/index.astro"
-import Heading6 from "@/atoms-diksha/headings/six/color-primary/index.astro"
-import ParagraphExtralight from "@/atoms-diksha/paragraphs/extralight/color-primary/index.astro"
+import Heading2SixXlBlack from "@/atoms-diksha/headings/two/6xl/black/primary/index.astro"
+import Heading6Primary from "@/atoms-diksha/headings/six/primary/index.astro"
+import ParagraphExtralightPrimary from "@/atoms-diksha/paragraphs/extralight/primary/index.astro"
 
+const about_us = {
+    title:"We design visual solutions for greater impact",
+    subtitle:"About our design agency",
+    description1:"Founded in 2013, The Beacon Design Collective is an award-winning creative agency offering its services exclusively to organizations in the sustainability and social justice sectors. We’re not just a design agency. We share a common trait with our clients: our passion for social justice and sustainability. As a carbon-negative company with a diverse and inclusive team, we are a values-aligned partner for our clients.",
+    description2:"We create brands and help them communicate better and grow stronger through our strategic design expertise. We offer a comprehensive range of services – from branding to strategic campaigns to graphic design– all tailored to support your mission of making a lasting, positive impact on the world.",
+    buttonText:"About us"
+}
 ---
 
 <section class="lg:px-16 lg:py-24 px-6 py-12">
     <div class="flex flex-col gap-6 lg:flex-row justify-between items-center">
         <div class="relative">
-            <img width="396" height="650" src="https://beaconcollective.com/wp-content/uploads/2023/09/about-2.png" alt="image" srcset="https://beaconcollective.com/wp-content/uploads/2023/09/about-2.png 396w, https://beaconcollective.com/wp-content/uploads/2023/09/about-2-183x300.png 183w" sizes="(max-width: 396px) 100vw, 396px">
-            <img src="https://beaconcollective.com/wp-content/uploads/2023/09/about-1.png" alt="" class="hidden xl:block absolute top-20 -right-40 -z-10">
+            <img src="/images/about-us-2.png" alt="">
+            <img src="/images/about-us-1.png" alt="" class="hidden xl:block absolute top-20 -right-40 -z-10">
     </div>
         <div class="lg:w-1/2 flex flex-col gap-6">
             <div class="flex gap-6 items-center">
                 <hr class="w-16 border-t-2 border-color-secondary"/>
-                <Heading6>ABOUT OUR DESIGN AGENCY</Heading6>
+                <Heading6Primary>{ about_us.subtitle }</Heading6Primary>
             </div>
-            <Heading2>
-                We design visual solutions for greater impact
+            <Heading2SixXlBlack>
+                { about_us.title }
                 <span class="text-color-secondary">.</span>
-            </Heading2>
-            <ParagraphExtralight>
-                Founded in 2013, The Beacon Design Collective is an award-winning creative agency offering its services exclusively to organizations in the sustainability and social justice sectors. We’re not just a design agency. We share a common trait with our clients: our passion for social justice and sustainability. As a carbon-negative company with a diverse and inclusive team, we are a values-aligned partner for our clients.
-            </ParagraphExtralight>
-            <ParagraphExtralight>
-                We create brands and help them communicate better and grow stronger through our strategic design expertise. We offer a comprehensive range of services – from branding to strategic campaigns to graphic design– all tailored to support your mission of making a lasting, positive impact on the world.
-            </ParagraphExtralight>
+            </Heading2SixXlBlack>
+            <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
+            <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
             <div>
                 <ButtonOutlined>
-                <a href="$" class="underline hover:no-underline">ABOUT US</a>
+                <a href="$" class="underline hover:no-underline uppercase">{ about_us.buttonText }</a>  
                 <span class="no-underline">↗︎</span>
                 </ButtonOutlined>
             </div>
