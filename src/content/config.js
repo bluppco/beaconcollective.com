@@ -6,14 +6,6 @@ const headerCollection = defineCollection({
 
         logo: z.string(),
 		link: z.string(),
-		social_links: z.array(
-
-			z.object({
-				source: z.string(),
-				link: z.string(),
-			})
-
-		).optional(),
         nav_links: z.array(
 
 			z.object({
