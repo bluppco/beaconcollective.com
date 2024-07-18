@@ -1,6 +1,164 @@
 ---
 
----
-<section>
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container-custom/index.astro"
 
+// IMPORT ASTRO COMPOENTS
+import WorkCard from "@/components/home/work/card/index.astro"
+
+// IMPORT ASTRO ATOMS
+import  HeadingThree from "@/atoms/atoms-shiva/headings/three/six-xl/extrabold/dark-blue/index.astro"
+import  HeadingTwo from "@/atoms/atoms-shiva/headings/two/base/dark-blue/index.astro"
+
+// HARDCODED DATA
+const data = {
+
+    subtitle: "Awesome results",
+    title: "AWESOME WORK",
+
+}
+const card_data = [
+
+    {
+        description_one: "Improvement in ad performance within 30 days.",
+        description_two: "We strategized and designed creative campaigns for Oxfam Canada to persuade Canada's top five fashion brands to disclose their factories' names and locations and commit to paying the workers a fair living wage.",
+        link: "/",
+        link_text: "Read full case study",
+        subtitle_one: "IMPACT",
+        subtitle_two: "+235% ",
+        title: "Oxfam Canada",
+    },
+    {
+        description_one: "increase in annual revenue in the first year after branding and 34% increase in warm leads generated via the website.",
+        description_two: "We crafted a new brand strategy, supported by a vibrant visual language for Moon Jaguar Strategies to communicate its values to its target audience with authenticity and integrity.",
+        link: "/",
+        link_text: "Read full case study",
+        subtitle_one: "IMPACT",
+        subtitle_two: "+144% ",
+        title: "Moon Jaguar Strategies",
+    },
+    {
+        description_one: "in funds over a two-month period following the rebrand.",
+        description_two: "Kinship Heals wanted an impactful website to connect with the women in their communities while striving to access funding programs. We carefully designed their website, capturing the perfect visual ambiance and colour palette, and artfully translating their story into compelling visuals.",
+        link: "/",
+        link_text: "Read full case study",
+        subtitle_one: "IMPACT",
+        subtitle_two: "$2.5 million ",
+        title: "Kinship Heals",
+    },
+    {
+        description_one: "proposals won with ease.",
+        description_two: "Black Fly Environmental wanted to attract more clients and wow prospects with its proposal for services. We refreshed their brand, revamped their content strategy, designed their website, and developed other brand assets, such as resumes, business cards, and letterhead.",
+        link: "/",
+        link_text: "Read full case study",
+        subtitle_one: "IMPACT",
+        subtitle_two: "Large ",
+        title: "Black Fly Environmental",
+    },
+    {
+        description_one: "since branding and $5m capital raised since branding occurred.",
+        description_two: "We provided Carbon Engineering with a comprehensive visual brand language, a brand style guide, and a range of visually appealing assets to help them attract new investments.",
+        link: "/",
+        link_text: "Read full case study",
+        subtitle_one: "IMPACT",
+        subtitle_two: "4x growth ",
+        title: "Carbon Engineering",
+    },
+    {
+        description_one: "21% boost in international customers, 5% increase in the average order size.",
+        description_two: "Mountain Kids Outfitters wanted a refreshed brand identity to support their local, regional, and nationwide growth. We rebranded them, crafting their vision and core values, defining a unique selling proposition, and designing a comprehensive visual identity, including logos, fonts, colours, and a custom-illustrated brand character.",
+        link: "/",
+        link_text: "Read full case study",
+        subtitle_one: "IMPACT",
+        subtitle_two: "+10% checkouts ",
+        title: "Mountain Kids Outfitters",
+    },
+
+]
+
+---
+
+<section class="py-12">
+    <Container>
+        <div class="flex flex-col gap-10">
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-0.5 bg-emerald-400"></div>
+                    <HeadingTwo>AWESOME WORK</HeadingTwo>
+                </div>
+                <HeadingThree>{ data.subtitle }<span class="text-emerald-400 text-4xl md:text-6xl">.</span></HeadingThree>
+            </div>
+            <div class="work-slider">
+                {
+
+                    card_data.map( ( data ) => (
+
+                        <div class="px-2">
+                            <WorkCard
+                                description_one={ data.description_one }
+                                description_two={ data.description_two }
+                                link={ data.link }
+                                link_text={ data.link_text }
+                                subtitle_one={ data.subtitle_one }
+                                subtitle_two={ data.subtitle_two }
+                                title={ data.title }
+                            />
+                        </div>
+
+                    ))
+
+                }
+            </div>
+        </div>
+    </Container>
 </section>
+
+<script >
+    // SLICK SLIDER FUNCTION FOR RESPONSIVE CAROUSAL
+    document.addEventListener('DOMContentLoaded', function() {
+        $('.work-slider').slick({
+            // DOT BUTTONS BELOW THE CAROUSAL ACTIVE
+            dots: false,
+
+            // PREVIOUS ARROW BUTTON DISABLED
+            prevArrow: false,
+
+            // NEXT ARROW BUTTON DISABLED
+            nextArrow: false,
+
+            // INFINITELY SCROLLING
+            infinite: true,
+
+            // SPEED OF SCROLLING
+            speed: 300,
+
+            // SLIDES TO SHOW FOR DIFFERENT WINDOWS
+            slidesToShow: 3,
+
+            // SLIDES TO SCROLL EVERYTIME WE SCROLL
+            slidesToScroll: 1,
+
+            responsive: [
+                {
+                    // DESIGN OF SLIDES FOR BELOW 1024
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                    }
+                },
+                {
+                    // DESIGN OF SLIDES FOR BELOW 640
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        centerMode: false
+                    }
+                },
+            ]
+        })
+    })
+</script>
