@@ -10,6 +10,9 @@ const headerContent = header_data[0]
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container-custom/index.astro"
 
+// IMPORT REACT COMPONENTS
+import SocialLinks from "@/components/common/header/social-icons/social-icons"
+
 // IMPORT ASTRO ATOMS
 import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 
@@ -18,22 +21,8 @@ import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 <header class="absolute top-0 w-full mt-6">
     <Container>
         <section class="flex flex-col gap-4 lg:border-b-0 border-blue-500"  id="navbar">
-            <div class="flex justify-end gap-6">
-                {
-
-                    headerContent.data.social_links.map( ( item ) => (
-
-                        <div class="w-6 aspect-square">
-                            <a href={ item.link }>
-                                <PictureContain
-                                    source={ item.source }
-                                />
-                            </a>
-                        </div>
-
-                    ) )
-
-                }
+            <div class="flex justify-end">
+                <SocialLinks/>
             </div>
             <div class="flex justify-between">
                 <div class="h-16 md:h-20 aspect-[4/1]">
