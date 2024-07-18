@@ -1,6 +1,92 @@
 ---
 
----
-<section class="h-dvh bg-home">
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container-custom/index.astro"
 
+// IMPORT ASTRO COMPONENTS
+import HeroCard from "@/components/home/hero/card/hero-card"
+
+// IMPORT ASTRO ATOMS
+import PictureCover from "@/atoms/picture/internal/index.astro"
+
+// HARDCODED DATA
+const data = {
+
+    alternative_text: "hero bg",
+    source: "/images/beacon-group-photo.webp",
+    
+
+}
+const heading_data = [
+    {
+        button_link: "",
+        button_text: "SEE OUR WORK",
+        colored_title: ["increase your funding."],
+        title: "Award-winning strategic design to increase your funding."
+    },
+    {
+        button_link: "",
+        button_text: "SEE OUR WORK",
+        colored_title: ["create engaging reports"],
+        title: "We create engaging reports that amplify your impact…"
+    },
+    {
+        button_link: "",
+        button_text: "SEE OUR WORK",
+        colored_title: ["design communications that resonate"],
+        title: "We design communications that resonate with your target audience…"
+    },
+    {
+        button_link: "",
+        button_text: "SEE OUR WORK",
+        colored_title: ["strengthen your brand"],
+        title: "We strengthen your brand through thoughtful design…"
+    },
+]
+
+---
+
+<section class="pt-36 pb-14 bg-home">
+    <Container>
+        <div class="grid gap-6 lg:gap-10 grid-cols-1 lg:grid-cols-2 pt-20">
+            <div class="hero-slider flex items-center justify-center">
+                {
+
+                    heading_data.map( ( data ) => (
+
+                        <HeroCard
+                            button_link={ data.button_link }
+                            button_text={ data.button_text }
+                            colored_title={ data.colored_title }
+                            title={ data.title }
+                        />
+
+                    ))
+
+                }
+            </div>
+            <div class="rounded-tl-3xl rounded-br-3xl overflow-hidden w-full aspect-[16/11]">
+                <PictureCover
+                    alternative_text={ data.alternative_text }
+                    source={ data.source }
+                />
+            </div>
+        </div>
+    </Container>
 </section>
+
+<script>
+    $(document).ready(function(){
+        $('.hero-slider').slick({
+            prevArrow: false,
+            nextArrow: false,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            fade:true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            infinite: true,        
+        })
+    })
+</script>
