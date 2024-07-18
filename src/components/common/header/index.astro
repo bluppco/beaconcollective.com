@@ -1,13 +1,106 @@
 ---
 
+// IMPORT ASTRO COLLECTION
+import { getCollection } from "astro:content"
+
+// IMPORT HEADER COLLECTION
+let header_data = await getCollection("header")
+const headerContent = header_data[0]
+
 // IMPORT ASTRO LAYOUTS
-import Container from "@/layouts/container/index.astro"
+import Container from "@/layouts/container-custom/index.astro"
+
+// IMPORT ASTRO ATOMS
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 
 ---
-<header class="bg-blue-600 h-12">
+
+<header class="absolute top-0 w-full mt-6">
     <Container>
-        <section class="flex items-center h-full">
-            <p class="text-white">I am header</p>
+        <section class="flex flex-col gap-4 lg:border-b-0 border-blue-500"  id="navbar">
+            <div class="flex justify-end gap-6">
+                {
+
+                    headerContent.data.social_links.map( ( item ) => (
+
+                        <div class="w-6 aspect-square">
+                            <a href={ item.link }>
+                                <PictureContain
+                                    source={ item.source }
+                                />
+                            </a>
+                        </div>
+
+                    ) )
+
+                }
+            </div>
+            <div class="flex justify-between">
+                <div class="h-16 md:h-20 aspect-[4/1]">
+                    <a href={ headerContent.data.link }>
+                        <PictureContain
+                            alternative_text=""
+                            source={ headerContent.data.logo }
+                        />
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center gap-6">
+                    {
+
+                        headerContent.data.nav_links.map( ( item ) => (
+
+                            <a href={ item.link }>
+                                <span class="text-white font-medium hover:text-gray-400 duration-300">{ item.title }</span>
+                            </a>
+
+                        ) )
+
+                    }
+                </div>
+                <div class="lg:hidden w-8 aspect-square cursor-pointer" id="burger-menu">
+                    <PictureContain
+                        alternative_text="menu"
+                        source="/icons/burger-menu.svg"
+                    />
+                </div>
+            </div>
         </section>
+        <div id="mobile-nav" class="lg:hidden flex flex-col gap-4 px-12 absolute left-0 w-full max-h-0 bg-dark-blue z-50 transition-[max-height] duration-700 overflow-hidden">
+            {
+
+                headerContent.data.nav_links.map( ( item ) => (
+
+                    <a href={ item.link }>
+                        <span class="text-white text-lg underline block pt-4">{ item.title }</span>
+                    </a>
+
+                ))
+
+            }
+        </div>
     </Container>
 </header>
+
+<script>
+    const menu = document.getElementById('burger-menu')
+    const mobileNav = document.getElementById('mobile-nav')
+    const navbar = document.getElementById('navbar')
+
+    // TOGGLE MOBILE NAVBAR BY MANIPULATING HEIGHT
+    menu.addEventListener('click', () => {
+        if (mobileNav.classList.contains('max-h-0')) {
+            mobileNav.classList.remove('max-h-0')
+            mobileNav.classList.add('max-h-screen')
+            mobileNav.classList.add('py-4') 
+            navbar.classList.add('border-b-2') 
+        } else {
+            mobileNav.classList.remove('max-h-screen')
+            mobileNav.classList.add('max-h-0') 
+            // DELAY FOR REMOVING THE PADDING AND BORDER FOR SMOOTH ANIMATIONS
+            setTimeout(() => {
+                mobileNav.classList.remove('py-4')
+                navbar.classList.remove('border-b-2')
+            }, 500)
+        }
+    })
+</script>
