@@ -4,8 +4,8 @@
 import ServiceCard from "./service-card/index.astro"  
 
 // IMPORT ATOMS
-import Heading2SixXlWhite from "@/atoms-diksha/headings/two/6xl/black/white/index.astro";
-import Heading6White from "@/atoms-diksha/headings/six/white/index.astro";
+import HeadingTwoSixXlWhite from "@/atoms-diksha/headings/two/6xl/black/white/index.astro";
+import HeadingSixWhite from "@/atoms-diksha/headings/six/white/index.astro";
 
 // CONSTANTS
 const services = [
@@ -37,22 +37,24 @@ const services = [
     <div class="flex flex-col gap-2 items-center">
         <div class="flex gap-6 items-center">
             <hr class="w-16 border-t-2 border-color-secondary"/>
-            <Heading6White>OUR SERVICES</Heading6White>
+            <HeadingSixWhite>OUR SERVICES</HeadingSixWhite>
         </div>
         <div class="sm:w-1/3">
-            <Heading2SixXlWhite>
+            <HeadingTwoSixXlWhite>
                 What we do to drive results
                 <span class="text-color-secondary">.</span>
-            </Heading2SixXlWhite>
+            </HeadingTwoSixXlWhite>
         </div>
         <div class="pt-10 md:pt-20 flex flex-col flex-wrap lg:flex-nowrap sm:flex-row gap-8 justify-center">
-            {services.map((service) => (
-                <ServiceCard 
-                    image_source={service.image_source} 
-                    title={service.title} 
-                    description={service.description} 
-                />
-            ))}
+            {
+                services.map((service) => (
+                    <ServiceCard 
+                        image_source={service.image_source} 
+                        title={service.title} 
+                        description={service.description} 
+                    />
+                ))
+            }
         </div>
     </div>
 </section>

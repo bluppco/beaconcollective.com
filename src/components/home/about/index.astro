@@ -2,9 +2,10 @@
 
 // IMPORT ATOMS
 import ButtonOutlined from "@/atoms-diksha/buttons/outlined/index.astro"
-import Heading2SixXlBlack from "@/atoms-diksha/headings/two/6xl/black/primary/index.astro"
-import Heading6Primary from "@/atoms-diksha/headings/six/primary/index.astro"
+import HeadingTwoSixXlBlack from "@/atoms-diksha/headings/two/6xl/black/primary/index.astro"
+import HeadingSixPrimary from "@/atoms-diksha/headings/six/primary/index.astro"
 import ParagraphExtralightPrimary from "@/atoms-diksha/paragraphs/extralight/primary/index.astro"
+import Picture from "@/atoms-diksha/picture/index.astro"
 
 const about_us = {
     title:"We design visual solutions for greater impact",
@@ -13,31 +14,31 @@ const about_us = {
     description2:"We create brands and help them communicate better and grow stronger through our strategic design expertise. We offer a comprehensive range of services – from branding to strategic campaigns to graphic design– all tailored to support your mission of making a lasting, positive impact on the world.",
     buttonText:"About us"
 }
+
 ---
 
 <section class="lg:px-16 lg:py-24 px-6 py-12">
     <div class="flex flex-col gap-6 lg:flex-row justify-between items-center">
         <div class="relative">
-            <img src="/images/about-us-2.png" alt="">
-            <img src="/images/about-us-1.png" alt="" class="hidden xl:block absolute top-20 -right-40 -z-10">
+            <Picture image_source="/images/about-us-2.png" image_alt="" styles="w-full"/>
+            <Picture image_source="/images/about-us-1.png" image_alt="" styles="hidden xl:block absolute top-20 -right-40 -z-10"/>
     </div>
-        <div class="lg:w-1/2 flex flex-col gap-6">
-            <div class="flex gap-6 items-center">
-                <hr class="w-16 border-t-2 border-color-secondary"/>
-                <Heading6Primary>{ about_us.subtitle }</Heading6Primary>
-            </div>
-            <Heading2SixXlBlack>
-                { about_us.title }
-                <span class="text-color-secondary">.</span>
-            </Heading2SixXlBlack>
-            <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
-            <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
-            <div>
-                <ButtonOutlined>
+    <div class="lg:w-1/2 flex flex-col gap-6">
+        <div class="flex gap-6 items-center">
+            <hr class="w-16 border-t-2 border-color-secondary"/>
+            <HeadingSixPrimary>{ about_us.subtitle }</HeadingSixPrimary>
+        </div>
+        <HeadingTwoSixXlBlack>
+            { about_us.title }
+            <span class="text-color-secondary">.</span>
+        </HeadingTwoSixXlBlack>
+        <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
+        <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
+        <div>
+            <ButtonOutlined>
                 <a href="$" class="underline hover:no-underline uppercase">{ about_us.buttonText }</a>  
                 <span class="no-underline">↗︎</span>
-                </ButtonOutlined>
-            </div>
+            </ButtonOutlined>
         </div>
     </div>
 </section>
