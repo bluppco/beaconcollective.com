@@ -27,6 +27,7 @@ module.exports = {
 			backgroundImage: {
 
 				"home" : "url('/images/home-bg-pic.jpg')",
+				"work-slides" : "url('/images/work-slider-bg.jpeg')",
 
 			},
 			keyframes: {
