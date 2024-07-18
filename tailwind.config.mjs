@@ -24,6 +24,11 @@ module.exports = {
 		},
     	extend: {
 
+			backgroundImage: {
+
+				"home" : "url('/images/home-bg-pic.jpg')",
+
+			},
 			keyframes: {
 
 				"accordion-down": {
@@ -47,6 +52,7 @@ module.exports = {
 			},
 			colors: {
 
+				"dark-blue": "#0C1729",
 
 			},
 			fontFamily: {
