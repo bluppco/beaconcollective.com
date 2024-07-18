@@ -15,7 +15,9 @@ const {
 ---
 
 <div class="p-6 flex-none flex flex-col items-start gap-2 bg-[#4f78a7] lg:bg-color-primary rounded-xl">
-    <Picture image_source={ image_source } image_alt={ title } styles="h-20"/>
+    <div class="h-20">
+        <Picture image_source={ image_source } image_alt={ title }/>
+    </div>
     <HeadingFiveLgMediumWhite>{ title }</HeadingFiveLgMediumWhite>
     <div class="w-64">
         <ParagraphExtralightWhite>{ description }</ParagraphExtralightWhite>
