@@ -11,9 +11,11 @@ const headerContent = header_data[0]
 import Container from "@/layouts/container-custom/index.astro"
 
 // IMPORT REACT COMPONENTS
-import SocialLinks from "@/components/common/header/social-icons/social-icons"
+import MobileNav from "@/components/common/header/mobile/index.astro"
+import SocialLinks from "@/components/common/header/social-icons/jsx/index"
 
 // IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
 import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 
 ---
@@ -26,21 +28,21 @@ import PictureContain from "@/atoms/picture/internal/contain/index.astro"
             </div>
             <div class="flex justify-between">
                 <div class="h-16 md:h-20 aspect-[4/1]">
-                    <a href={ headerContent.data.link }>
+                    <Link href={ headerContent.data.link }>
                         <PictureContain
                             alternative_text=""
                             source={ headerContent.data.logo }
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div class="hidden lg:flex items-center gap-6">
                     {
 
                         headerContent.data.nav_links.map( ( item ) => (
 
-                            <a href={ item.link }>
+                            <Link href={ item.link }>
                                 <span class="text-white font-medium hover:text-gray-400 duration-300">{ item.title }</span>
-                            </a>
+                            </Link>
 
                         ) )
 
@@ -54,19 +56,7 @@ import PictureContain from "@/atoms/picture/internal/contain/index.astro"
                 </div>
             </div>
         </section>
-        <div id="mobile-nav" class="lg:hidden flex flex-col gap-4 px-12 absolute left-0 w-full max-h-0 bg-dark-blue z-50 transition-[max-height] duration-700 overflow-hidden">
-            {
-
-                headerContent.data.nav_links.map( ( item ) => (
-
-                    <a href={ item.link }>
-                        <span class="text-white text-lg underline block pt-4">{ item.title }</span>
-                    </a>
-
-                ))
-
-            }
-        </div>
+        <MobileNav/>
     </Container>
 </header>
 
