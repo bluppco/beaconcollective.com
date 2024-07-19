@@ -1,0 +1,33 @@
+---
+
+// IMPORT ASTRO ATOMS
+import HeadingFourXlCenter from "@/atoms/atoms-shiva/headings/four/xl/semibold/center/index.astro"
+import ParagraphSmCenter from "@/atoms/atoms-shiva/paragraphs/sm/medium/center/index.astro"
+import ParagraphSmlightCenter from "@/atoms/atoms-shiva/paragraphs/sm/light/gray/center/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// GET ASTRO PROPS
+const {
+
+    description,
+    source,
+    subtitle,
+    title,
+
+} = Astro.props
+
+---
+
+<div class="px-8 py-10 flex flex-col items-center gap-6 bg-white rounded-lg min-h-dvh">
+    <div class="size-24 aspect-square">
+        <PictureContain
+            alternative_text=""
+            source={ source }
+        />
+    </div>
+    <div class="flex flex-col items-center justify-center gap-2">
+        <HeadingFourXlCenter>{ title }</HeadingFourXlCenter>
+        <ParagraphSmCenter>{ subtitle }</ParagraphSmCenter>
+    </div>
+    <ParagraphSmlightCenter>{ description }</ParagraphSmlightCenter>
+</div>
