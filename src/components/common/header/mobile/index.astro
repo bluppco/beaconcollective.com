@@ -1,0 +1,27 @@
+---
+
+// IMPORT ASTRO COLLECTION
+import { getCollection } from "astro:content"
+
+// IMPORT HEADER COLLECTION
+let header_data = await getCollection("header")
+const headerContent = header_data[0]
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+
+---
+
+<div id="mobile-nav" class="lg:hidden flex flex-col gap-4 px-12 absolute left-0 w-full max-h-0 bg-dark-blue z-50 transition-[max-height] duration-700 overflow-hidden">
+    {
+
+        headerContent.data.nav_links.map( ( item ) => (
+
+            <Link href={ item.link }>
+                <span class="text-white text-lg underline block pt-4">{ item.title }</span>
+            </Link>
+
+        ))
+
+    }
+</div>
