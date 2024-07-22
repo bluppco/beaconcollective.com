@@ -3,7 +3,7 @@
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container-custom/index.astro"
 
-// IMPORT ASTRO COMPONENTS
+// IMPORT JSX COMPONENTS
 import HeroCard from "@/components/home/hero/card/jsx/index"
 
 // IMPORT ASTRO ATOMS
@@ -14,39 +14,48 @@ const data = {
 
     alternative_text: "hero bg",
     source: "/images/beacon-group-photo.webp",
-    
 
 }
 const heading_data = [
+
     {
+
         button_link: "",
         button_text: "SEE OUR WORK",
         colored_title: ["increase your funding."],
         title: "Award-winning strategic design to increase your funding."
+
     },
     {
+
         button_link: "",
         button_text: "SEE OUR WORK",
         colored_title: ["create engaging reports"],
         title: "We create engaging reports that amplify your impact…"
+
     },
     {
+
         button_link: "",
         button_text: "SEE OUR WORK",
         colored_title: ["design communications that resonate"],
         title: "We design communications that resonate with your target audience…"
+
     },
     {
+
         button_link: "",
         button_text: "SEE OUR WORK",
         colored_title: ["strengthen your brand"],
         title: "We strengthen your brand through thoughtful design…"
+
     },
+
 ]
 
 ---
 
-<section class="pt-36 pb-14 bg-home">
+<section class="bg-[url('/images/home-bg-pic.jpg')] pt-36 pb-14">
     <Container>
         <div class="grid gap-6 lg:gap-10 grid-cols-1 lg:grid-cols-2 pt-20">
             <div class="hero-slider flex items-center justify-center">
@@ -76,16 +85,28 @@ const heading_data = [
 </section>
 
 <script>
+    // SLICK SLIDER FUCNTION
     $(document).ready(function(){
         $('.hero-slider').slick({
+            // ARROWS DISABLED
             prevArrow: false,
             nextArrow: false,
+
+            // AUTOMATIC TRUE WITH SPEED
             autoplay: true,
             autoplaySpeed: 4000,
+
+            // FADE EFFECT TRUE
             fade:true,
+
+            // SLIDES TO SHOW IN WINDOW AND SLIDE TO SCROLL
             slidesToShow: 1,
             slidesToScroll: 1,
+
+            // BOTTOM DOTS FALSE
             dots: false,
+
+            // SLIDE INFINITELY
             infinite: true,        
         })
     })
