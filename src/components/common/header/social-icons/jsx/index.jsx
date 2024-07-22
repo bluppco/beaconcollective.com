@@ -29,7 +29,9 @@ const links = [
 ]
 
 const SocialLinks = () => {
+
     return (
+
         <div className="flex gap-6">
             {
             
@@ -43,6 +45,8 @@ const SocialLinks = () => {
             
             }
         </div>
+
     )
+    
 }
 export default SocialLinks
