@@ -5,81 +5,73 @@ import { getCollection } from "astro:content"
 
 // IMPORT HEADER COLLECTION
 let header_data = await getCollection("header")
-const headerContent = header_data[0]
+header_data = header_data.sort( ( a, b ) => a.data.order - b.data.order )
 
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container-custom/index.astro"
 
-// IMPORT REACT COMPONENTS
-import MobileNav from "@/components/common/header/mobile/index.astro"
+// IMPORT JSX COMPONENTS
 import SocialLinks from "@/components/common/header/social-icons/jsx/index"
+
+// IMPORT ASTRO COMPONENTS
+import MobileNav from "@/components/common/header/mobile/index.astro"
 
 // IMPORT ASTRO ATOMS
 import Link from "@/atoms/links/index.astro"
 import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 
+// HARDCODE DATA
+const data = {
+
+    logo_link: "/",
+    logo_source: "/logo/beacon.svg",
+
+}
+
 ---
 
 <header class="absolute top-0 w-full mt-6">
     <Container>
-        <section class="flex flex-col gap-4 lg:border-b-0 border-blue-500"  id="navbar">
+        <nav class="hidden lg:flex flex-col gap-4">
             <div class="flex justify-end">
                 <SocialLinks/>
             </div>
             <div class="flex justify-between">
-                <div class="h-16 md:h-20 aspect-[4/1]">
-                    <Link href={ headerContent.data.link }>
+                <div class="h-20 aspect-[4/1]">
+                    <Link href={ data.logo_link }>
                         <PictureContain
                             alternative_text=""
-                            source={ headerContent.data.logo }
+                            source={ data.logo_source }
                         />
                     </Link>
                 </div>
-                <div class="hidden lg:flex items-center gap-6">
+                <ul class="flex items-center gap-6">
                     {
 
-                        headerContent.data.nav_links.map( ( item ) => (
+                        header_data.map( ( item ) => {
 
-                            <Link href={ item.link }>
-                                <span class="text-white font-medium hover:text-gray-400 duration-300">{ item.title }</span>
-                            </Link>
+                            return (
 
-                        ) )
+                                <li>
+                                    {
+
+                                        item.data.live &&
+                                        <Link href={ item.data.link }>
+                                            <span class="text-white font-medium hover:text-gray-400 duration-300">{ item.data.title }</span>
+                                        </Link>
+
+
+                                    }
+                                </li>
+
+                            )
+
+                        })
 
                     }
-                </div>
-                <div class="lg:hidden w-8 aspect-square cursor-pointer" id="burger-menu">
-                    <PictureContain
-                        alternative_text="menu"
-                        source="/icons/burger-menu.svg"
-                    />
-                </div>
+                </ul>
             </div>
-        </section>
-        <MobileNav/>
+        </nav>
+        <MobileNav header_data={ header_data }/>
     </Container>
 </header>
-
-<script>
-    const menu = document.getElementById('burger-menu')
-    const mobileNav = document.getElementById('mobile-nav')
-    const navbar = document.getElementById('navbar')
-
-    // TOGGLE MOBILE NAVBAR BY MANIPULATING HEIGHT
-    menu.addEventListener('click', () => {
-        if (mobileNav.classList.contains('max-h-0')) {
-            mobileNav.classList.remove('max-h-0')
-            mobileNav.classList.add('max-h-screen')
-            mobileNav.classList.add('py-4') 
-            navbar.classList.add('border-b-2') 
-        } else {
-            mobileNav.classList.remove('max-h-screen')
-            mobileNav.classList.add('max-h-0') 
-            // DELAY FOR REMOVING THE PADDING AND BORDER FOR SMOOTH ANIMATIONS
-            setTimeout(() => {
-                mobileNav.classList.remove('py-4')
-                navbar.classList.remove('border-b-2')
-            }, 500)
-        }
-    })
-</script>
