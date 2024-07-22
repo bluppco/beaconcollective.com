@@ -1,27 +1,104 @@
 ---
 
-// IMPORT ASTRO COLLECTION
-import { getCollection } from "astro:content"
-
-// IMPORT HEADER COLLECTION
-let header_data = await getCollection("header")
-const headerContent = header_data[0]
+// IMPORT JSX COMPONENTS
+import SocialLinks from "@/components/common/header/social-icons/jsx/index"
 
 // IMPORT ASTRO ATOMS
 import Link from "@/atoms/links/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// GET ASTRO PROPS
+const {
+
+    header_data,
+
+} = Astro.props
+
+// HARDCODE DATA
+const data = {
+
+    logo_link: "/",
+    logo_source: "/logo/beacon.svg",
+
+}
 
 ---
 
-<div id="mobile-nav" class="lg:hidden flex flex-col gap-4 px-12 absolute left-0 w-full max-h-0 bg-dark-blue z-50 transition-[max-height] duration-700 overflow-hidden">
+<nav class="lg:hidden flex flex-col gap-4 lg:border-b-0 border-blue-500"  id="navbar">
+    <div class="flex justify-end">
+        <SocialLinks/>
+    </div>
+    <div class="flex justify-between">
+        <div class="h-16 md:h-20 aspect-[4/1]">
+            <Link href={ data.logo_link }>
+                <PictureContain
+                    alternative_text=""
+                    source={ data.logo_source }
+                />
+            </Link>
+        </div>
+        <div class="w-8 aspect-square cursor-pointer" id="burger-menu">
+            <PictureContain
+                alternative_text="menu"
+                source="/icons/burger-menu.svg"
+            />
+        </div>
+    </div>
+</nav>
+<ul id="mobile-nav" class="flex flex-col gap-4 px-12 absolute left-0 w-full max-h-0 bg-dark-blue z-50 transition-[max-height] duration-700 overflow-hidden">
     {
 
-        headerContent.data.nav_links.map( ( item ) => (
+        header_data.map( ( item ) => {
 
-            <Link href={ item.link }>
-                <span class="text-white text-lg underline block pt-4">{ item.title }</span>
-            </Link>
+            return (
 
-        ))
+                <li>
+                    {
+
+                        item.data.live &&
+                        <Link href={ item.data.link }>
+                            <span class="text-white text-lg underline block pt-4">{ item.data.title }</span>
+                        </Link>
+
+                    }
+                </li>
+
+            )  
+
+        })
 
     }
-</div>
+</ul>
+
+<script>
+    const menu = document.getElementById('burger-menu')
+    const mobileNav = document.getElementById('mobile-nav')
+    const navbar = document.getElementById('navbar')
+
+    // TOGGLE MOBILE NAVBAR BY MANIPULATING HEIGHT
+    menu.addEventListener('click', () => {
+
+        if (mobileNav.classList.contains('max-h-0')) {
+
+            mobileNav.classList.remove('max-h-0')
+            mobileNav.classList.add('max-h-screen')
+            mobileNav.classList.add('py-4')
+            navbar.classList.add('border-b-2')
+
+        } 
+        else {
+
+            mobileNav.classList.remove('max-h-screen')
+            mobileNav.classList.add('max-h-0') 
+            // DELAY FOR REMOVING THE PADDING AND BORDER FOR SMOOTH ANIMATIONS
+            setTimeout(() => {
+
+                mobileNav.classList.remove('py-4')
+                navbar.classList.remove('border-b-2')
+
+            }, 500)
+
+        }
+
+    })
+</script>
