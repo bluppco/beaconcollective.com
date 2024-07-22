@@ -6,7 +6,7 @@ import HeadingThreeWhite from "@/atoms/atoms-shiva/headings/three/three-xl/semib
 import Link from "@/atoms/links/index.astro"
 import ParagraphBaseSemiboldWhite from "@/atoms/atoms-shiva/paragraphs/base/leading-eight/semibold/white/index.astro"
 import ParagraphBaseWhite from "@/atoms/atoms-shiva/paragraphs/base/leading-eight/white/index.astro"
-import ParagraphFourXlwhite from "@/atoms/atoms-shiva/paragraphs/four-xl/semibold/white/index.astro"
+import ParagraphFourXlWhite from "@/atoms/atoms-shiva/paragraphs/four-xl/semibold/white/index.astro"
 import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 
 // GET ASTRO PROPS
@@ -25,17 +25,17 @@ const {
 ---
 
 <Link href={ link }>
-    <div class="px-6 py-8 flex flex-col justify-between bg-work-slides hover:bg-home duration-300 bg-cover bg-center h-screen">
+    <div class="flex flex-col justify-between bg-[url('/images/work-slider-bg.jpeg')] bg-cover bg-center hover:bg-[url('/images/home-bg-pic.jpg')] duration-300 h-screen px-6 py-8 group">
         <div class="flex flex-col gap-4">
             <HeadingThreeWhite>{ title }</HeadingThreeWhite>
             <HeadingFourEmerald>{ subtitle_one }</HeadingFourEmerald>
-            <ParagraphFourXlwhite>{ subtitle_two }</ParagraphFourXlwhite>
+            <ParagraphFourXlWhite>{ subtitle_two }</ParagraphFourXlWhite>
             <ParagraphBaseSemiboldWhite>{ description_one }</ParagraphBaseSemiboldWhite>
             <ParagraphBaseWhite>{ description_two }</ParagraphBaseWhite>
         </div>
         <div class="flex items-center gap-2">
             <ParagraphBaseSemiboldWhite>{ link_text }</ParagraphBaseSemiboldWhite>
-            <div class="h-2 aspect-[10/1]">
+            <div class="h-4 w-14 group-hover:w-10 duration-300">
                 <PictureContain
                     alternative_text="arrow right"
                     source="/icons/right-arrow.svg"

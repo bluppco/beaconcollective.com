@@ -7,8 +7,9 @@ import Container from "@/layouts/container-custom/index.astro"
 import TestimonialCard from "@/components/home/testimonials/card/index.astro"
 
 // IMPORT ASTRO ATOMS
-import  HeadingThree from "@/atoms/atoms-shiva/headings/three/six-xl/extrabold/dark-blue/index.astro"
-import  HeadingTwo from "@/atoms/atoms-shiva/headings/two/base/dark-blue/index.astro"
+import HeadingThree from "@/atoms/atoms-shiva/headings/three/six-xl/extrabold/dark-blue/index.astro"
+import HeadingTwo from "@/atoms/atoms-shiva/headings/two/base/dark-blue/index.astro"
+import Line from "@/atoms/atoms-shiva/headings/line/index.astro"
 
 // HARDCODED DATA
 const data = {
@@ -19,49 +20,61 @@ const data = {
 }
 const card_data = [
 
+
     {   
+
         description: "Beacon helped us to tell our story, address the complexity of communicating our mission and programs, and introduce ourselves to new funders, all in a clean and compelling way. We've been able to double our budget, and grow our staff and our impact, so I could not be more thrilled with the results.",
         source: "/images/testimonial/braeden-lentz.png",
         subtitle: "Development Director, Working Families Party",
         title: "Braeden Lentz",
+
     },
-    {   
+    {  
+
         description: "Beacon is a top notch design firm, that is remarkably responsive and super easy to work with. Their team is really talented, and really ‘got’ what we were looking for—practicing (not preaching) human-centered design. At the project onset, they provided a comprehensive work plan that outlined exactly what was going to happen and when in order to meet the deadline. They were able to create an attractive, effective, and fresh visual language for our organization in only a few short weeks. Their project manager offers lightning fast email replies so I never have to wonder what’s going on. I wholeheartedly recommend The Beacon Design Collective Inc.",
         source: "/images/testimonial/michael-schmitz.png",
         subtitle: "VP Strategic Partnerships,  Recarbon Inc",
         title: "Michael Schmitz",
+
     },
     {   
+
         description: "Dani Vachon and the Beacon Collective are absolutely wonderful to work with—so much so that this is now the second organization at which I have chosen to work with her team for our design needs. Dani has an impeccable eye for creative design, is incredibly responsive and communicative, and has never missed a deadline (despite us often bringing projects with complex, technical content and tight turnaround times). She is a delight to work with and consistently makes my job easier. I wholeheartedly recommend Dani and the Beacon team.",
         source: "/images/testimonial/tara-bojdak.png",
         subtitle: "Manager, Communications, Carbon Engineering Ltd",
         title: "Tara Bojdak",
+
     },
-    {   
+    {  
+
         description: "When my partner asked me, 'If money were no object, would you still choose Beacon?' I said yes. I've worked with other agencies before, and they just don’t compare to Beacon.",
         source: "/images/testimonial/ennifer-gosse.png",
         subtitle: "Director & Environmental Specialist, Black Fly Environmental",
         title: "Jennifer Gosse",
+
     },
     {   
+
         description: "As a consulting firm that is often pulled to delivery high quality work, working with Beacon Design Collective was a great choice. The team was responsive, possess a keen eye for design, meet the respective deadline and satisfied our budget requirements. We will continue to return to Beacon Design for future work and potential partnership opportunities.",
         source: "/images/testimonial/elijah-moses.png",
         subtitle: "Social Architect + Avenues Architect, Urban Equity Consulting Group",
         title: "Elijah Moses",
+
     },
+
 
 ]
 
 ---
 
-<section class="py-12 bg-gray-100">
+<section class="bg-gray-100 py-12">
     <Container>
         <div class="flex flex-col gap-10">
             <div class="flex flex-col items-center justify-center gap-2">
                 <div class="flex items-center gap-4">
-                    <div class="w-16 h-0.5 bg-emerald-400"></div>
+                    <Line/>
                     <HeadingTwo>{ data.title }</HeadingTwo>
-                </div>
+                </Line>
                 <HeadingThree>{ data.subtitle }<span class="text-emerald-400 text-4xl md:text-6xl">.</span></HeadingThree>
             </div>
             <div class="testimonial-slider">
@@ -69,7 +82,7 @@ const card_data = [
 
                     card_data.map( ( data ) => (
 
-                        <div class="px-2 h-full slick-slide">
+                        <div class="px-2">
                             <TestimonialCard
                                 description={ data.description }
                                 source={ data.source }

@@ -3,12 +3,13 @@
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container-custom/index.astro"
 
-// IMPORT ASTRO COMPOENTS
+// IMPORT ASTRO COMPONENTS
 import WorkCard from "@/components/home/work/card/index.astro"
 
 // IMPORT ASTRO ATOMS
-import  HeadingThree from "@/atoms/atoms-shiva/headings/three/six-xl/extrabold/dark-blue/index.astro"
-import  HeadingTwo from "@/atoms/atoms-shiva/headings/two/base/dark-blue/index.astro"
+import HeadingThree from "@/atoms/atoms-shiva/headings/three/six-xl/extrabold/dark-blue/index.astro"
+import HeadingTwo from "@/atoms/atoms-shiva/headings/two/base/dark-blue/index.astro"
+import Line from "@/atoms/atoms-shiva/headings/line/index.astro"
 
 // HARDCODED DATA
 const data = {
@@ -83,7 +84,7 @@ const card_data = [
         <div class="flex flex-col gap-10">
             <div class="flex flex-col gap-2">
                 <div class="flex items-center gap-4">
-                    <div class="w-16 h-0.5 bg-emerald-400"></div>
+                    <Line/>
                     <HeadingTwo>{ data.title }</HeadingTwo>
                 </div>
                 <HeadingThree>{ data.subtitle }<span class="text-emerald-400 text-4xl md:text-6xl">.</span></HeadingThree>
