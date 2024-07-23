@@ -1,0 +1,39 @@
+---
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import ParagraphExtrasmallWidestWhite from "@/atoms/atoms-nandini/paragraphs/xs/widest/white/index.astro"
+
+// IMPORT DATA FROM FRONT-MATTER
+import { frontmatter as paragraph } from "@/content/footer-paragraph-left/paragraph.md"
+
+// GET ASTRO PROPS
+const { data } = Astro.props
+const paragraph_text  = paragraph.text
+
+---
+<section>
+    <div class="flex gap-1">
+        <ParagraphExtrasmallWidestWhite>{ paragraph_text }</ParagraphExtrasmallWidestWhite>
+        <ul class="flex gap-1">
+            {
+
+                data.map( ( item ) => {
+
+                    return (
+                        
+                            <li class="text-white underline hover:no-underline font-fira_sans text-xs tracking-widest">
+                                <Link
+                                    aria-label={ "explore " + item.data.title }
+                                    href={ item.data.link }
+                                >
+                                    { item.data.title }
+                                </Link>
+                            </li>
+
+                    )
+                })
+            }
+        </ul>
+    </div>
+</section>
