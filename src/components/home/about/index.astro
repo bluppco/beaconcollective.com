@@ -1,11 +1,16 @@
 ---
 
-// IMPORT ATOMS
+// IMPORT ASTRO LAYOUTS
+import AboutUsLayout from "@/layouts/home-layout/about-us-layout/index.astro"
+
+// IMPORT ASTRO ATOMS
 import ButtonOutlined from "@/atoms-diksha/buttons/outlined/index.astro"
 import HeadingTwoSixXlBlack from "@/atoms-diksha/headings/two/6xl/black/primary/index.astro"
-import HeadingSixPrimary from "@/atoms-diksha/headings/six/primary/index.astro"
+import HeadingSixUppercasePrimary from "@/atoms-diksha/headings/six/uppercase/primary/index.astro"
+import Link from "@/atoms/links/index.astro"
 import ParagraphExtralightPrimary from "@/atoms-diksha/paragraphs/extralight/primary/index.astro"
-import Picture from "@/atoms-diksha/picture/index.astro"
+import ParagraphUppercaseUnderline from "@/atoms-diksha/paragraphs/uppercase/underline/index.astro"
+import Picture from "@/atoms/picture/internal/index.astro"
 
 const about_us = {
     title:"We design visual solutions for greater impact",
@@ -17,20 +22,25 @@ const about_us = {
 
 ---
 
-<section class="lg:px-16 lg:py-24 px-6 py-12">
-    <div class="flex flex-col gap-6 lg:flex-row justify-between items-center">
-        <div class="relative">
-            <div class="w-full">
-                <Picture image_source="/images/about-us-2.png" image_alt=""/>
-            </div>
-            <div class="hidden xl:block absolute top-20 -right-40 -z-10">
-                <Picture image_source="/images/about-us-1.png" image_alt=""/>
-            </div>
+<AboutUsLayout>
+    <div class="relative">
+        <div class="w-full">
+            <Picture 
+                source="/images/about-us-2.png" 
+                alternative_text="about_us_2"
+            />
         </div>
+        <div class="hidden xl:block absolute top-20 -right-40 -z-10">
+            <Picture 
+                source="/images/about-us-1.png" 
+                alternative_text="about_us_1"
+            />
+        </div>
+    </div>
     <div class="lg:w-1/2 flex flex-col gap-6">
         <div class="flex gap-6 items-center">
             <hr class="w-16 border-t-2 border-color-secondary"/>
-            <HeadingSixPrimary>{ about_us.subtitle }</HeadingSixPrimary>
+            <HeadingSixUppercasePrimary>{ about_us.subtitle }</HeadingSixUppercasePrimary>
         </div>
         <HeadingTwoSixXlBlack>
             { about_us.title }
@@ -39,10 +49,15 @@ const about_us = {
         <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
         <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
         <div>
-            <ButtonOutlined>
-                <a href="$" class="underline hover:no-underline uppercase">{ about_us.buttonText }</a>  
-                <span class="no-underline">↗︎</span>
-            </ButtonOutlined>
+            <Link 
+                href="/"
+                aria_label="About us"
+            >
+                <ButtonOutlined>
+                    <ParagraphUppercaseUnderline>{ about_us.buttonText }</ParagraphUppercaseUnderline> 
+                    <span class="text-2xl font-extralight no-underline">↗︎</span>
+                </ButtonOutlined>
+            </Link>
         </div>
     </div>
-</section>
+</AboutUsLayout>

@@ -1,25 +1,30 @@
 ---
 
-// IMPORT ATOMS
+// IMPORT ASTRO ATOMS
 import HeadingFiveLgMediumWhite from "@/atoms-diksha/headings/five/lg/medium/white/index.astro"
 import ParagraphExtralightWhite from "@/atoms-diksha/paragraphs/extralight/white/index.astro"
-import Picture from "@/atoms-diksha/picture/index.astro"
+import Picture from "@/atoms/picture/internal/index.astro"
 
 //GET ASTRO PROPS
 const { 
+
+    description,
     image_source,
     title,
-    description,
+    
 } = Astro.props
 
 ---
 
-<div class="p-6 flex-none flex flex-col items-start gap-2 bg-[#4f78a7] lg:bg-color-primary rounded-xl">
-    <div class="h-20">
-        <Picture image_source={ image_source } image_alt={ title }/>
+<div class="p-6 flex-none flex flex-col items-start gap-2 bg-color-tertiary lg:bg-color-primary rounded-xl">
+    <div class="h-20 w-auto">
+        <Picture 
+            source={ image_source } 
+            alternative_text={ title }
+        />
     </div>
     <HeadingFiveLgMediumWhite>{ title }</HeadingFiveLgMediumWhite>
-    <div class="w-64">
+    <div class="w-80 lg:w-64">
         <ParagraphExtralightWhite>{ description }</ParagraphExtralightWhite>
     </div>
 </div>
