@@ -23,8 +23,8 @@ const card_data = [
     {
         description_one: "Improvement in ad performance within 30 days.",
         description_two: "We strategized and designed creative campaigns for Oxfam Canada to persuade Canada's top five fashion brands to disclose their factories' names and locations and commit to paying the workers a fair living wage.",
-        link: "/",
         link_text: "Read full case study",
+        link: "/",
         subtitle_one: "IMPACT",
         subtitle_two: "+235% ",
         title: "Oxfam Canada",
@@ -32,8 +32,8 @@ const card_data = [
     {
         description_one: "increase in annual revenue in the first year after branding and 34% increase in warm leads generated via the website.",
         description_two: "We crafted a new brand strategy, supported by a vibrant visual language for Moon Jaguar Strategies to communicate its values to its target audience with authenticity and integrity.",
-        link: "/",
         link_text: "Read full case study",
+        link: "/",
         subtitle_one: "IMPACT",
         subtitle_two: "+144% ",
         title: "Moon Jaguar Strategies",
@@ -41,8 +41,8 @@ const card_data = [
     {
         description_one: "in funds over a two-month period following the rebrand.",
         description_two: "Kinship Heals wanted an impactful website to connect with the women in their communities while striving to access funding programs. We carefully designed their website, capturing the perfect visual ambiance and colour palette, and artfully translating their story into compelling visuals.",
-        link: "/",
         link_text: "Read full case study",
+        link: "/",
         subtitle_one: "IMPACT",
         subtitle_two: "$2.5 million ",
         title: "Kinship Heals",
@@ -50,8 +50,8 @@ const card_data = [
     {
         description_one: "proposals won with ease.",
         description_two: "Black Fly Environmental wanted to attract more clients and wow prospects with its proposal for services. We refreshed their brand, revamped their content strategy, designed their website, and developed other brand assets, such as resumes, business cards, and letterhead.",
-        link: "/",
         link_text: "Read full case study",
+        link: "/",
         subtitle_one: "IMPACT",
         subtitle_two: "Large ",
         title: "Black Fly Environmental",
@@ -59,8 +59,8 @@ const card_data = [
     {
         description_one: "since branding and $5m capital raised since branding occurred.",
         description_two: "We provided Carbon Engineering with a comprehensive visual brand language, a brand style guide, and a range of visually appealing assets to help them attract new investments.",
-        link: "/",
         link_text: "Read full case study",
+        link: "/",
         subtitle_one: "IMPACT",
         subtitle_two: "4x growth ",
         title: "Carbon Engineering",
@@ -68,8 +68,8 @@ const card_data = [
     {
         description_one: "21% boost in international customers, 5% increase in the average order size.",
         description_two: "Mountain Kids Outfitters wanted a refreshed brand identity to support their local, regional, and nationwide growth. We rebranded them, crafting their vision and core values, defining a unique selling proposition, and designing a comprehensive visual identity, including logos, fonts, colours, and a custom-illustrated brand character.",
-        link: "/",
         link_text: "Read full case study",
+        link: "/",
         subtitle_one: "IMPACT",
         subtitle_two: "+10% checkouts ",
         title: "Mountain Kids Outfitters",
@@ -94,17 +94,15 @@ const card_data = [
 
                     card_data.map( ( data ) => (
 
-                        <div class="px-2">
-                            <WorkCard
-                                description_one={ data.description_one }
-                                description_two={ data.description_two }
-                                link={ data.link }
-                                link_text={ data.link_text }
-                                subtitle_one={ data.subtitle_one }
-                                subtitle_two={ data.subtitle_two }
-                                title={ data.title }
-                            />
-                        </div>
+                        <WorkCard
+                            description_one={ data.description_one }
+                            description_two={ data.description_two }
+                            link_text={ data.link_text }
+                            link={ data.link }
+                            subtitle_one={ data.subtitle_one }
+                            subtitle_two={ data.subtitle_two }
+                            title={ data.title }
+                        />
 
                     ))
 
