@@ -1,5 +1,8 @@
 ---
 
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro"
+
 // IMPORT ASTRO ATOMS
 import HeadingTwo6xlExtraboldCenter from "@/atoms/atoms-nandini/headings/two/6xl/extrabold/center/index.astro"
 import ParagraphBaseSemibold from "@/atoms/atoms-nandini/paragraphs/base/semibold/index.astro"
@@ -46,44 +49,47 @@ const blogs=[
 
 ---
 <section>
-    <div class="grid mx-5 my-10 justify-center">
-        <div class="grid gap-5 pb-10">
-            <ParagraphCenter>{ data.heading }</ParagraphCenter>
-            <HeadingTwo6xlExtraboldCenter>{ data.title }</HeadingTwo6xlExtraboldCenter>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-4">
-            <div>
-                <div class="relative aspect-auto h-full w-full lg:h-1/2 rounded-xl overflow-hidden">
-                    <PictureInternal
-                        alternative_text="Image"
-                        source="/images/blogs.png"
-                    />
-                    <div class="absolute bg-gradient-to-b inset-0 from-transparent to-blue-950 object-cover opacity-90 rounded-xl"></div>
-                    <div class="grid gap-3 absolute bottom-4 left-4">
-                        <ParagraphSmallWhite>{ data.image_details }</ParagraphSmallWhite>
-                        <ParagraphLargeBoldWhite>{ data.image_title }</ParagraphLargeBoldWhite>
+    <Container>
+        <div class="my-10 justify-center">
+            <div class="space-y-5 pb-10">
+                <ParagraphCenter>{ data.heading }</ParagraphCenter>
+                <HeadingTwo6xlExtraboldCenter>{ data.title }</HeadingTwo6xlExtraboldCenter>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <div class="relative w-full h-full aspect-auto rounded-xl overflow-hidden">
+                        <PictureInternal
+                            alternative_text="Image"
+                            source="/images/blogs.png"
+                        />
+                        <div class="absolute bg-gradient-to-b inset-0 from-transparent to-blue-950 object-cover opacity-90 rounded-xl"></div>
+                        <div class="absolute space-y-3 bottom-4 left-4">
+                            <ParagraphSmallWhite>{ data.image_details }</ParagraphSmallWhite>
+                            <ParagraphLargeBoldWhite>{ data.image_title }</ParagraphLargeBoldWhite>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <div class="flex flex-wrap sm:grid sm:grid-rows-4 lg:grid-cols-2 gap-4">       
-            {
-                            
-                blogs.map( ( item ) => {
+            <div class="flex flex-wrap sm:grid sm:grid-rows-4 lg:grid-rows-none lg:grid-cols-2 gap-4">       
+                {
                                 
-                    return (
-                        
-                            <div class="border rounded-lg grid gap-5 p-5 w-full lg:w-52 xl:w-72 hover:text-white hover:bg-black">
-                                <div class="space-y-2">
-                                    <ParagraphXSExtrabold>{ item.title }</ParagraphXSExtrabold>
-                                    <ParagraphBaseSemibold>{ item.desc }</ParagraphBaseSemibold>
+                    blogs.map( ( item ) => {
+                                    
+                        return (
+                                
+                                <div class="group border rounded-lg space-y-5 w-full lg:w-64 2xl:w-full p-5 hover:bg-black">
+                                    <div class="space-y-2">
+                                        <ParagraphXSExtrabold>{ item.title }</ParagraphXSExtrabold>
+                                        <ParagraphBaseSemibold>{ item.desc }</ParagraphBaseSemibold>
+                                    </div>
+                                    <ParagraphSmall>{ item.date }</ParagraphSmall>
                                 </div>
-                                <ParagraphSmall>{ item.date }</ParagraphSmall>
-                            </div>
-                    
-                    )
-
-                })
-
-            }
-    </div>
+                        
+                        )
+    
+                    })
+    
+                }
+        </div>
+        </div>
+    </Container>
 </section>
