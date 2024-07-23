@@ -18,16 +18,18 @@ const {
 
 ---
 
-<div class="flex flex-col items-center gap-6 bg-white rounded-lg min-h-dvh px-8 py-10">
-    <div class="size-24">
-        <PictureContain
-            alternative_text=""
-            source={ source }
-        />
+<div>
+    <div class="flex flex-col items-center gap-6 bg-white rounded-lg min-h-dvh px-8 py-10 mx-2">
+        <div class="size-24">
+            <PictureContain
+                alternative_text=""
+                source={ source }
+            />
+        </div>
+        <div class="flex flex-col items-center justify-center gap-2">
+            <HeadingFourXlCenter>{ title }</HeadingFourXlCenter>
+            <ParagraphSmCenter>{ subtitle }</ParagraphSmCenter>
+        </div>
+        <ParagraphSmlightCenter>{ description }</ParagraphSmlightCenter>
     </div>
-    <div class="flex flex-col items-center justify-center gap-2">
-        <HeadingFourXlCenter>{ title }</HeadingFourXlCenter>
-        <ParagraphSmCenter>{ subtitle }</ParagraphSmCenter>
-    </div>
-    <ParagraphSmlightCenter>{ description }</ParagraphSmlightCenter>
 </div>
