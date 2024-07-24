@@ -1,7 +1,7 @@
 ---
 
 // IMPORT ASTRO LAYOUTS
-import AboutUsLayout from "@/layouts/home-layout/about-us-layout/index.astro"
+import ContainerLarge from "@/layouts/container-large/index.astro"
 
 // IMPORT ASTRO ATOMS
 import ButtonOutlined from "@/atoms-diksha/buttons/outlined/index.astro"
@@ -22,42 +22,44 @@ const about_us = {
 
 ---
 
-<AboutUsLayout>
-    <div class="relative">
-        <div class="w-full">
-            <Picture 
-                source="/images/about-us-2.png" 
-                alternative_text="about_us_2"
-            />
+<ContainerLarge>
+    <div class="flex flex-col gap-6 lg:flex-row justify-between items-center">
+        <div class="relative">
+            <div class="w-full aspect-auto">
+                <Picture 
+                    alternative_text="about_us_2"
+                    source="/images/about-us-2.png" 
+                />
+            </div>
+            <div class="hidden xl:block absolute top-20 -right-40 -z-10 w-full aspect-auto">
+                <Picture 
+                    alternative_text="about_us_1"
+                    source="/images/about-us-1.png" 
+                />
+            </div>
         </div>
-        <div class="hidden xl:block absolute top-20 -right-40 -z-10">
-            <Picture 
-                source="/images/about-us-1.png" 
-                alternative_text="about_us_1"
-            />
+        <div class="lg:w-1/2 flex flex-col gap-6">
+            <div class="flex gap-6 items-center">
+                <hr class="w-16 border-t-2 border-color-secondary"/>
+                <HeadingSixUppercasePrimary>{ about_us.subtitle }</HeadingSixUppercasePrimary>
+            </div>
+            <HeadingTwoSixXlBlack>
+                { about_us.title }
+                <span class="text-color-secondary">.</span>
+            </HeadingTwoSixXlBlack>
+            <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
+            <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
+            <div>
+                <Link 
+                    aria_label="About us"
+                    href="/"
+                >
+                    <ButtonOutlined>
+                        <ParagraphUppercaseUnderline>{ about_us.buttonText }</ParagraphUppercaseUnderline> 
+                        <span class="text-2xl font-extralight no-underline">↗︎</span>
+                    </ButtonOutlined>
+                </Link>
+            </div>
         </div>
     </div>
-    <div class="lg:w-1/2 flex flex-col gap-6">
-        <div class="flex gap-6 items-center">
-            <hr class="w-16 border-t-2 border-color-secondary"/>
-            <HeadingSixUppercasePrimary>{ about_us.subtitle }</HeadingSixUppercasePrimary>
-        </div>
-        <HeadingTwoSixXlBlack>
-            { about_us.title }
-            <span class="text-color-secondary">.</span>
-        </HeadingTwoSixXlBlack>
-        <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
-        <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
-        <div>
-            <Link 
-                href="/"
-                aria_label="About us"
-            >
-                <ButtonOutlined>
-                    <ParagraphUppercaseUnderline>{ about_us.buttonText }</ParagraphUppercaseUnderline> 
-                    <span class="text-2xl font-extralight no-underline">↗︎</span>
-                </ButtonOutlined>
-            </Link>
-        </div>
-    </div>
-</AboutUsLayout>
+</ContainerLarge>
