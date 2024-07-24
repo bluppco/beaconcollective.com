@@ -47,6 +47,7 @@ module.exports = {
 			},
 			colors: {
 
+				"dark-blue": "#0C1729",
 
 			},
 			fontFamily: {
