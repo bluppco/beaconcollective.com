@@ -47,8 +47,11 @@ module.exports = {
 			},
 			colors: {
 
-				"dark-blue": "#0C1729",
-
+					primary: "#0b172b",
+					secondary: "#5bcca4",
+					tertiary:"#4f78a7",
+					grey: "#d6d6d6",
+          "dark-blue": "#0C1729",
 			},
 			fontFamily: {
 
