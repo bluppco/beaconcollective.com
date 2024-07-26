@@ -1,13 +1,69 @@
 ---
 
+// IMPORT ASTRO COLLECTION
+import { getCollection } from "astro:content"
+
+// IMPORT HEADER COLLECTION
+let header_data = await getCollection("header")
+header_data = header_data.filter(item => item.data.live).sort((a, b) => a.data.order - b.data.order)
+
 // IMPORT ASTRO LAYOUTS
-import Container from "@/layouts/container/index.astro"
+import Container from "@/layouts/container-custom/index.astro"
+
+// IMPORT JSX COMPONENTS
+import SocialLinks from "@/components/common/header/social-icons/jsx/index"
+
+// IMPORT ASTRO COMPONENTS
+import MobileHeader from "@/components/common/header/mobile/index.astro"
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// HARDCODE DATA
+const data = {
+
+    logo_link: "/",
+    logo_source: "/logo/beacon.svg",
+
+}
 
 ---
-<header class="bg-blue-600 h-12">
+
+<header class="absolute top-0 w-full mt-6">
     <Container>
-        <section class="flex items-center h-full">
-            <p class="text-white">I am header</p>
-        </section>
+        <nav class="hidden lg:flex flex-col gap-4">
+            <div class="flex justify-end">
+                <SocialLinks/>
+            </div>
+            <div class="flex justify-between">
+                <div class="h-20 aspect-[4/1]">
+                    <Link href={ data.logo_link }>
+                        <PictureContain
+                            alternative_text=""
+                            source={ data.logo_source }
+                        />
+                    </Link>
+                </div>
+                <ul class="flex items-center gap-6">
+                    {
+
+                        header_data.map( ( item ) => {
+
+                            return (
+
+                                <Link href={ item.data.link }>
+                                    <li class="text-white font-medium hover:text-gray-400 duration-300">{ item.data.title }</li>
+                                </Link>
+
+                            )
+
+                        })
+
+                    }
+                </ul>
+            </div>
+        </nav>
+        <MobileHeader header_data={ header_data }/>
     </Container>
 </header>
