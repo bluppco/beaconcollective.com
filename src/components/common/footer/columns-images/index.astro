@@ -1,0 +1,30 @@
+---
+
+// IMPORT ASTRO ATOMS
+import PctureInternal from "@/atoms/picture/internal/index.astro"
+
+// GET ASTRO PROPS
+const { data } = Astro.props
+
+---
+<section>
+    <div class="flex flex-wrap gap-5 md:flex justify-between">
+        {
+
+            data.map( ( item ) => {
+
+                return (
+                    
+                        <div class="h-20 aspect-auto">
+                            <PctureInternal
+                                alternative_text={ item.data.alternative_text }
+                                source={ item.data.link }
+                            />
+                        </div>
+
+                )
+            })
+        }
+    </div>
+        
+</section>

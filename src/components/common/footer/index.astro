@@ -1,11 +1,62 @@
 ---
 
+// IMPORT ASTRO COLLECTION
+import { getCollection } from 'astro:content'
+
+// IMPORT FOOTER COLUMN ONE COLLECTION
+let footer_column_one = await getCollection('footer-column-one')
+footer_column_one = footer_column_one.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN TWO COLLECTION
+let footer_column_two = await getCollection('footer-column-two')
+footer_column_two = footer_column_two.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN THREE COLLECTION
+let footer_column_three = await getCollection('footer-column-three')
+footer_column_three = footer_column_three.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
+// IMPORT FOOTER COLUMN FOUR COLLECTION
+let footer_column_four = await getCollection('footer-column-four')
+footer_column_four = footer_column_four.sort( ( a, b ) => a.data.order - b.data.order).filter( ( item ) => item.data.live )
+
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container/index.astro"
 
+// IMPORT ASTRO COMPONENTS
+import FooterColumnAnchor from "@/components/common/footer/columns-anchor/index.astro"
+import FooterColumnImage from "@/components/common/footer/columns-images/index.astro"
+import FooterColumnLeft from "@/components/common/footer/column-left/index.astro"
+
+// IMPORT ASTRO ATOMS
+import HeadingThree5xlExtraboldWhite from "@/atoms/atoms-nandini/headings/three/5xl/extrabold/white/index.astro"
+import ParagraphExtrasmallWhite from "@/atoms/atoms-nandini/paragraphs/xs/white/index.astro"
+
+// IMPORT DATA FROM FRONT-MATTER
+import { frontmatter as title } from "@/content/footer-title/title.md"
+import { frontmatter as paragraph } from "@/content/footer-paragraph-right/paragraph.md"
+
+// HARDCODED DATA
+const title_text = title.text
+const paragraph_text  = paragraph.text
+
 ---
-<footer class="bg-black py-20">
+<footer class="bg-black pt-20 pb-5 px-10">
     <Container>
-        <p class="text-white">I am footer</p>
+        <div class="space-y-24">
+            <div class="md:grid md:grid-cols-2 justify-between">
+                <HeadingThree5xlExtraboldWhite>{ title_text }</HeadingThree5xlExtraboldWhite>
+                <div class="flex justify-between md:justify-end md:gap-20">
+                    <FooterColumnAnchor data={ footer_column_one } />
+                    <FooterColumnAnchor data={ footer_column_two } />
+                </div>
+            </div>
+            <div>
+                <FooterColumnImage data={footer_column_three}/>
+            </div>
+            <div class="space-y-5 md:flex justify-between mt-10">
+                <FooterColumnLeft data={footer_column_four} />
+                <ParagraphExtrasmallWhite>{ paragraph_text }</ParagraphExtrasmallWhite>
+            </div>
+        </div>
     </Container>
 </footer>

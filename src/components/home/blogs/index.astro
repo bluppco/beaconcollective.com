@@ -1,6 +1,95 @@
 ---
 
+// IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro"
+
+// IMPORT ASTRO ATOMS
+import HeadingTwo6xlExtraboldCenter from "@/atoms/atoms-nandini/headings/two/6xl/extrabold/center/index.astro"
+import ParagraphBaseSemibold from "@/atoms/atoms-nandini/paragraphs/base/semibold/index.astro"
+import ParagraphCenter from "@/atoms/atoms-nandini/paragraphs/center/index.astro"
+import ParagraphSmallWhite from "@/atoms/atoms-nandini/paragraphs/sm/white/index.astro"
+import ParagraphLargeBoldWhite from "@/atoms/atoms-nandini/paragraphs/lg/bold/white/index.astro"
+import ParagraphSmall from "@/atoms/atoms-nandini/paragraphs/sm/index.astro"
+import ParagraphXSExtrabold from "@/atoms/atoms-nandini/paragraphs/xs/extrabold/index.astro"
+import PictureInternal from "@/atoms/picture/internal/index.astro"
+
+// HARDCODED DATA
+const data={
+
+            heading:"FROM OUR BLOG",
+            title:"Design and branding insights.",
+            image_details:"ErinHowe Jones | Jun 27, 2024",
+            image_title:"Welcome to Our New Client Strategist and ...",
+
+}
+
+const blogs=[
+        {
+            title:"SOCIAL JUSTICE",
+            date:"Jun 26, 2024",
+            desc:"FOR IMMEDIATE RELEASE: The Beacon Design Collective Wins GOLD in VEGA Awards for “Being Métis Makes Me Happy!”",
+        },
+        {
+            title:"SOCIAL JUSTICE",
+            date:"Jun 18, 2024",
+            desc:"Harnessing the Power of AI: Transform Your Nonprofit’s Fundraising, Design, and Marketing",
+        },
+        {
+            title:"SOCIAL JUSTICE",
+            date:"May 10, 2024",
+            desc:"The Simplicity and Impact of Google Ad Grants, and How to Get It",
+        },
+        {
+            title:"SOCIAL JUSTICE",
+            date:"Mar 12, 2024",
+            desc:"Choosing the Right Fundraising Platform: Givebutter, Donorbox, and Classy Compared",
+        },
+
+]
+
 ---
 <section>
-
+    <Container>
+        <div class="my-10 justify-center">
+            <div class="space-y-5 pb-10">
+                <ParagraphCenter>{ data.heading }</ParagraphCenter>
+                <HeadingTwo6xlExtraboldCenter>{ data.title }</HeadingTwo6xlExtraboldCenter>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                    <div class="relative size-full rounded-xl overflow-hidden">
+                        <PictureInternal
+                            alternative_text="Image"
+                            source="/images/blogs.png"
+                        />
+                        <div class="absolute bg-gradient-to-b inset-0 from-transparent to-blue-950 object-cover opacity-90 rounded-xl"></div>
+                        <div class="absolute space-y-3 bottom-4 left-4">
+                            <ParagraphSmallWhite>{ data.image_details }</ParagraphSmallWhite>
+                            <ParagraphLargeBoldWhite>{ data.image_title }</ParagraphLargeBoldWhite>
+                        </div>
+                    </div>
+                </div>
+            <div class="flex flex-wrap sm:grid sm:grid-rows-4 lg:grid-rows-none lg:grid-cols-2 gap-4">       
+                {
+                                
+                    blogs.map( ( item ) => {
+                                    
+                        return (
+                                
+                                <div class="group border rounded-lg space-y-5 w-full lg:w-64 2xl:w-full p-5 hover:bg-black">
+                                    <div class="space-y-2">
+                                        <ParagraphXSExtrabold>{ item.title }</ParagraphXSExtrabold>
+                                        <ParagraphBaseSemibold>{ item.desc }</ParagraphBaseSemibold>
+                                    </div>
+                                    <ParagraphSmall>{ item.date }</ParagraphSmall>
+                                </div>
+                        
+                        )
+    
+                    })
+    
+                }
+        </div>
+        </div>
+    </Container>
 </section>
