@@ -1,6 +1,65 @@
 ---
 
----
-<section>
+// IMPORT ASTRO LAYOUTS
+import ContainerLarge from "@/layouts/container-large/index.astro"
 
-</section>
+// IMPORT ASTRO ATOMS
+import ButtonOutlined from "@/atoms-diksha/buttons/outlined/index.astro"
+import HeadingTwoSixXlBlack from "@/atoms-diksha/headings/two/6xl/black/primary/index.astro"
+import HeadingSixUppercasePrimary from "@/atoms-diksha/headings/six/uppercase/primary/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphExtralightPrimary from "@/atoms-diksha/paragraphs/extralight/primary/index.astro"
+import ParagraphUppercaseUnderline from "@/atoms-diksha/paragraphs/uppercase/underline/index.astro"
+import Picture from "@/atoms/picture/internal/index.astro"
+
+const about_us = {
+    title:"We design visual solutions for greater impact",
+    subtitle:"About our design agency",
+    description1:"Founded in 2013, The Beacon Design Collective is an award-winning creative agency offering its services exclusively to organizations in the sustainability and social justice sectors. We’re not just a design agency. We share a common trait with our clients: our passion for social justice and sustainability. As a carbon-negative company with a diverse and inclusive team, we are a values-aligned partner for our clients.",
+    description2:"We create brands and help them communicate better and grow stronger through our strategic design expertise. We offer a comprehensive range of services – from branding to strategic campaigns to graphic design– all tailored to support your mission of making a lasting, positive impact on the world.",
+    buttonText:"About us"
+}
+
+---
+
+<ContainerLarge>
+    <div class="flex flex-col gap-6 lg:flex-row justify-between items-center">
+        <div class="relative">
+            <div class="w-full aspect-[9/16]">
+                <Picture 
+                    alternative_text="about_us_2"
+                    source="/images/about-us-2.png" 
+                />
+            </div>
+            <div class="hidden xl:block absolute top-20 -right-40 -z-10 w-full aspect-sqaure">
+                <Picture 
+                    alternative_text="about_us_1"
+                    source="/images/about-us-1.png" 
+                />
+            </div>
+        </div>
+        <div class="lg:w-1/2 flex flex-col gap-6">
+            <div class="flex gap-6 items-center">
+                <hr class="w-16 border-t-2 border-color-secondary"/>
+                <HeadingSixUppercasePrimary>{ about_us.subtitle }</HeadingSixUppercasePrimary>
+            </div>
+            <HeadingTwoSixXlBlack>
+                { about_us.title }
+                <span class="text-color-secondary">.</span>
+            </HeadingTwoSixXlBlack>
+            <ParagraphExtralightPrimary>{ about_us.description1 }</ParagraphExtralightPrimary>
+            <ParagraphExtralightPrimary>{ about_us.description2 }</ParagraphExtralightPrimary>
+            <div>
+                <Link 
+                    aria_label="About us"
+                    href="/"
+                >
+                    <ButtonOutlined>
+                        <ParagraphUppercaseUnderline>{ about_us.buttonText }</ParagraphUppercaseUnderline> 
+                        <span class="text-2xl font-extralight no-underline">↗︎</span>
+                    </ButtonOutlined>
+                </Link>
+            </div>
+        </div>
+    </div>
+</ContainerLarge>

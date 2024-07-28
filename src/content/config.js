@@ -32,9 +32,23 @@ const footerColumnFourCollection = defineCollection({
         link: z.string().optional(),
 	})
 })
+const headerCollection = defineCollection({
+
+	schema: z.object({
+
+		link: z.string(),
+		live: z.boolean(),
+		order: z.number(),
+		title: z.string(),
+
+	})
+
+})
 export const collections = {
-	"footer-column-one": footerColumnOneCollection,
+	  "footer-column-one": footerColumnOneCollection,
     "footer-column-two": footerColumnTwoCollection,
     "footer-column-three": footerColumnThreeCollection,
     "footer-column-four": footerColumnFourCollection,
+    "header": headerCollection,
+
 }
