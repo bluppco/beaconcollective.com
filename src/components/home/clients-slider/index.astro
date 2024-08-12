@@ -1,6 +1,163 @@
 ---
 
----
-<section>
+// IMPORT ASTRO LAYOUTS
+import ContainerSmall from "@/layouts/container-custom/index.astro"
 
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// HARDCODED DATA
+const logos = [
+
+    {
+        alternative_text: "wfp",
+        link: "/",
+        source: "/logo/wfp.png",
+    },
+    {
+        alternative_text: "black-fly",
+        link: "/",
+        source: "/logo/black-fly.png",
+    },
+    {
+        alternative_text: "carbon-engineering",
+        link: "/",
+        source: "/logo/carbon-engineering.png",
+    },
+    {
+        alternative_text: "city-of-vancouver",
+        link: "/",
+        source: "/logo/city-of-vancouver.png",
+    },
+    {
+        alternative_text: "moon-jaguar-strategies",
+        link: "/",
+        source: "/logo/moon-jaguar-strategies.png",
+    },
+    {
+        alternative_text: "recarbon",
+        link: "/",
+        source: "/logo/recarbon.png",
+    },
+    {
+        alternative_text: "uvm",
+        link: "/",
+        source: "/logo/uvm.png",
+    },
+    {
+        alternative_text: "doctors",
+        link: "/",
+        source: "/logo/doctors.png",
+    },
+    {
+        alternative_text: "port-of-vancouver",
+        link: "/",
+        source: "/logo/port-of-vancouver.png",
+    },
+    {
+        alternative_text: "sfpd",
+        link: "/",
+        source: "/logo/sfpd.png",
+    },
+
+]
+
+---
+
+<section class="bg-neutral-200 py-16">
+    <ContainerSmall>
+        <div class="clients-slider">
+            {
+
+                logos.map( ( data ) => (
+
+                    <div class="!flex justify-center px-8">
+                        <Link href={ data.link }>
+                            <div class="w-36 aspect-video">
+                                <PictureContain
+                                    alternative_text={ data.alternative_text }
+                                    source={ data.source }
+                                />
+                            </div>
+                        </Link>
+                    </div>
+
+                ))
+
+            }
+        </div>
+    </ContainerSmall>
 </section>
+
+<script >
+    // SLICK SLIDER FUNCTION FOR RESPONSIVE CAROUSAL
+    document.addEventListener('DOMContentLoaded', function() {
+        $('.clients-slider').slick({
+            // DOT BUTTONS BELOW THE CAROUSAL ACTIVE
+            dots: false,
+
+            // PREVIOUS ARROW BUTTON DISABLED
+            prevArrow: false,
+
+            // NEXT ARROW BUTTON DISABLED
+            nextArrow: false,
+
+            // INFINITELY SCROLLING
+            infinite: true,
+
+            autoplay: true,
+            autoplaySpeed: 2000,
+
+            // SPEED OF SCROLLING
+            speed: 300,
+
+            // SLIDES TO SHOW FOR DIFFERENT WINDOWS
+            slidesToShow: 5,
+
+            // SLIDES TO SCROLL EVERYTIME WE SCROLL
+            slidesToScroll: 1,
+
+            responsive: [
+                {
+                    // DESIGN OF SLIDES FOR BELOW 1024
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                    }
+                },
+                {
+                    // DESIGN OF SLIDES FOR BELOW 740
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false,
+                    }
+                },
+                {
+                    // DESIGN OF SLIDES FOR BELOW 640
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        centerMode: false
+                    }
+                },
+                {
+                    // DESIGN OF SLIDES FOR BELOW 440
+                    breakpoint: 440,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        centerMode: false
+                    }
+                },
+            ]
+        })
+    })
+</script>
