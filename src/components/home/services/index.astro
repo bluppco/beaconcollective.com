@@ -30,13 +30,13 @@ const services = [
     {
         image_source:"/icons/services/graphic-design-icon.svg",
         title:"Graphic Design",
-        description:"We craft impactful infographics, presentations, and compelling social media graphics that align seamlessly with your brand guidelines and project goals.",    
+        description:"We craft impactful infographics, presentations, and compelling social media graphics that align seamlessly with your brand guidelines and project goals.",
     },
 ]
 
 ---
 
-<div class="bg-color-primary">
+<div class="bg-primary">
     <ContainerLarge>
         <div class="flex flex-col gap-2 items-center">
             <div class="flex gap-6 items-center">
@@ -54,14 +54,14 @@ const services = [
 
                     services.map( ( service ) => (
 
-                        <ServiceCard 
-                            description={ service.description } 
-                            image_source={ service.image_source } 
-                            title={ service.title } 
+                        <ServiceCard
+                            description={ service.description }
+                            image_source={ service.image_source }
+                            title={ service.title }
                         />
 
                     ))
-                    
+
                 }
             </div>
         </div>
